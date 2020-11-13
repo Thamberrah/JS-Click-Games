@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <style>
             .output {
-                background-color: aquamarine;
+                background-color: white;
                 height: 500px;
                 width: 500px;
                 border: 1px solid black;
@@ -17,20 +17,77 @@
 
     <body>
 
-        <div class="output"></div>
         <div class="message">
-            X: <span class="x"></span>
-            Y: <spanc class="y"></spanc>
+            X: <span class="x"></span> -
+            Y: <span class="y"></span>
         </div>
+        <div class="output"></div>
+
 
         <script>
             const output = document.querySelector(".output")
             // This is creating a variable called output, using the document
             // query selector, in order to select the element with the class
             // of output and put that into an object called output.
-
             // It is always a good idea to check to make sure that you do have
             // the element as the object of the output before it is used.
+
+            const messageOut = document.querySelectorAll(".message span")
+            // This is the message that is going out using the
+            // document selector. And because there are two elements
+            // that we are trying to select, we're going to use query
+            // selector all selecting the two spins.
+            // This can be specified more, in case there are more spans
+            // added to the page.
+
+
+            // Adding mouse events
+            // -- Adding a mouse event wheener the user hovers over the output area (vice-versa)
+            // The background colour will be updated using an output, so
+            // this can be done by adding an event. Thus, an event listener
+            // and a mouse even listener will be added for when the mouse enters.
+            // An anonymous event listener will be used
+
+            output.addEventListener("mouseenter", function () {
+                output.style.backgroundColor = "blue";
+            })
+            // When the mouse enters the box, the background colour of the
+            // box will turn blue. By updating the output, selecting the style
+            // value through the style attribute of the element and updating the
+            // background colour's object value, this can make the colour change
+            // to blue.
+
+            output.addEventListener("mouseleave", function () {
+                output.style.backgroundColor = "white";
+            })
+            // This code will allow the user to see that the box goes
+            // back to its original colour of "white", once the mouse
+            // exits the box area.
+
+            output.addEventListener("mousemove", function (e) {
+                console.log(e.x);
+                console.log(e.y);
+            // We also want to be able to track the mouse, and so this
+            // can be done by adding in one more of that listener, which
+            // this can add an event listener for whenever the mouse is
+            // moving and we want to track its position.
+            // It's x and y position data can be collected from the event
+            // object that is outputting it into the console.
+            // The data we want to collect from the output, is the Page X
+            // and Page Y
+
+                messageOut[0].innerText = e.x;
+                messageOut[1].innerText = e.y;
+            // Additional updating and outputting data can be used for showing
+            // the X and Y coordinates to the specified field for which it would
+            // be shown to the user.
+            // With the two Nodes, the first one is going to be X and the second
+            // one is going to be Y, this is because there are only two, and it
+            // is easy to figure out which one would be which.
+            })
+
+
+
         </script>
     </body>
 </html>
